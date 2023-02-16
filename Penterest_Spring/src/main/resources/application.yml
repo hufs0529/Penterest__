@@ -1,0 +1,34 @@
+logging:
+  pattern:
+    console: "[%d{MM:mm:ss.SSS}][%-5level][%logger.%method:%line] - %msg%n"
+  level:
+    com.example : DEBUG
+
+#DB 연결
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://34.64.118.149:3306/penterest?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 0000 # https://luna-archive.tistory.com/17
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      #      ddl-auto: create
+      hibernate.dd-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  security:
+    jwt:
+      token:
+        secretKey: this.is.tempSecretKey.need.to.change #Todo : 소스코드에 남겨있으면 안됨 > Edit Configuration > environment variables
+        #https://velog.io/@soyeon207/JWT-%EC%8B%A4%EC%8A%B5
+
+
+
